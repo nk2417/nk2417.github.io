@@ -1,1 +1,2 @@
-# nk2417.github.io
+# Hansung Kang - Personal Porfolio
+Static portfolio site

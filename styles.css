@@ -1,0 +1,86 @@
+:root {
+  --bg: #0a0a0a;
+  --text: #ededed;
+  --muted: #8a8a8a;
+  --accent: #5a7dc2;
+
+  --sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --col: 640px;
+  --pad: 1.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--col);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+.hero {
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-name {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: clamp(1.75rem, 6vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.hero-tagline {
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  font-size: 1.0625rem;
+  max-width: 34ch;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --pad: 1.25rem;
+  }
+
+  .hero {
+    min-height: 82vh;
+  }
+
+  .hero-tagline {
+    margin-top: 1rem;
+    font-size: 1rem;
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

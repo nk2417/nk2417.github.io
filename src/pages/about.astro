@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
-import { about, aboutPhotos, currently } from "../data/content";
+import { about, aboutPhotos, currently, subtitles } from "../data/content";
 
 const hasHeadshot = fs.existsSync(path.join(process.cwd(), "public", "headshot.jpg"));
 
@@ -20,6 +20,7 @@ const squatPct = Math.min(100, Math.round((squat.current / squat.goal) * 100));
 >
   <header class="pt-10 pb-6 sm:pt-12">
     <h1 class="text-3xl font-semibold tracking-tight text-ink">About</h1>
+    <p class="mt-2 text-base text-muted">{subtitles.about}</p>
   </header>
 
   <div class:list={["reveal", hasHeadshot && "grid gap-6 sm:grid-cols-[200px_1fr] sm:gap-8"]}>

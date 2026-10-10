@@ -210,8 +210,14 @@ export const aboutPhotos = [
   },
 ];
 
+export const subtitles = {
+  about: "A bit about me, outside the resume.",
+  projects: "Products and projects I've helped build.",
+  experience: "A running timeline of where I've worked.",
+};
+
 export const contact = {
-  intro: "Open to software engineering roles. The best way to reach me is email.",
+  intro: "I'm always happy to talk about my work or hear about yours. The best way to reach me is email.",
 };
 
 export const nav = [

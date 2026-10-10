@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ExperienceItem from "../components/ExperienceItem.astro";
-import { experience } from "../data/content";
+import { experience, subtitles } from "../data/content";
 ---
 
 <Layout
@@ -10,6 +10,7 @@ import { experience } from "../data/content";
 >
   <header class="pt-10 pb-6 sm:pt-12">
     <h1 class="text-3xl font-semibold tracking-tight text-ink">Experience</h1>
+    <p class="mt-2 text-base text-muted">{subtitles.experience}</p>
   </header>
 
   <ol class="relative ml-1 before:absolute before:top-2 before:bottom-2 before:left-[4px] before:w-px before:bg-line">

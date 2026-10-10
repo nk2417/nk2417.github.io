@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+import SocialLinks from "../components/SocialLinks.astro";
+import { projects, site } from "../data/content";
+
+const featured = projects.find((p) => p.featured)!;
+---
+
+<Layout mainClass="flex flex-col">
+  <section class="flex flex-1 flex-col justify-center py-8" aria-labelledby="hero-name">
+    <h1
+      id="hero-name"
+      class="text-[clamp(2.125rem,6vw,3.25rem)] leading-[1.05] font-semibold tracking-[-0.035em] text-ink"
+    >
+      {site.name}
+    </h1>
+    <p class="mt-3 text-base text-muted sm:text-lg">{site.subtitle}</p>
+
+    <div class="mt-7 flex flex-wrap items-center gap-3">
+      <a href="/projects/" class="btn btn-primary">
+        View Projects <Icon name="arrow" size={16} />
+      </a>
+      <div class="ml-1">
+        <SocialLinks />
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="featured-heading" class="pb-6 sm:pb-8">
+    <h2 id="featured-heading" class="sr-only">Featured project</h2>
+    <a href="/projects/" class="card card-featured group block p-4 sm:p-5">
+      <p class="mb-2"><span class="badge">Featured</span></p>
+      <div class="flex items-start justify-between gap-4">
+        <h3 class="text-lg font-semibold tracking-tight text-ink">{featured.title}</h3>
+        <Icon name="arrow" size={18} class="mt-1.5 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-accent" />
+      </div>
+      <p class="mt-2 text-muted">{featured.description}</p>
+      {
+        featured.stats && (
+          <p class="mt-4 flex flex-wrap gap-x-5 gap-y-1 font-mono text-sm">
+            {featured.stats.map((s) => (
+              <span>
+                <span class="font-medium text-accent">{s.value}</span>
+                <span class="text-muted"> {s.label}</span>
+              </span>
+            ))}
+          </p>
+        )
+      }
+    </a>
+  </section>
+</Layout>

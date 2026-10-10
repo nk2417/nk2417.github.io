@@ -1,0 +1,14 @@
+---
+import Icon from "./Icon.astro";
+import { links } from "../data/content";
+---
+
+<button type="button" class="btn btn-sm max-sm:w-8 max-sm:justify-center max-sm:px-0" data-copy={links.email} aria-label="Copy email address">
+  <span class="inline-flex items-center gap-1.5" data-copy-idle>
+    <Icon name="copy" size={14} /> <span class="max-sm:hidden">Copy</span>
+  </span>
+  <span class="inline-flex items-center gap-1.5 text-accent" data-copy-done hidden>
+    <Icon name="check" size={14} /> <span class="max-sm:hidden">Copied</span>
+  </span>
+  <span class="sr-only" aria-live="polite" data-copy-status></span>
+</button>

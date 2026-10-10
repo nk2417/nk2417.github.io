@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { projects } from "../data/content";
+
+const featured = projects.filter((p) => p.featured);
+const rest = projects.filter((p) => !p.featured);
+---
+
+<Layout
+  title="Projects"
+  description="Projects by Hansung Noah Kang, including TA Connect, a Django TA hiring platform used by the Boston College CS department."
+>
+  <header class="pt-10 pb-6 sm:pt-12">
+    <h1 class="text-3xl font-semibold tracking-tight text-ink">Projects</h1>
+    <p class="mt-2 text-base text-muted">Things I've built in school and for real users.</p>
+  </header>
+
+  <div class="flex flex-col gap-4">
+    {featured.map((p) => <ProjectCard project={p} />)}
+    {rest.map((p) => <ProjectCard project={p} />)}
+  </div>
+
+  <div class="h-16"></div>
+</Layout>

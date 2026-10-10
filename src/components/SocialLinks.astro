@@ -1,0 +1,23 @@
+---
+import Icon from "./Icon.astro";
+import ExternalLink from "./ExternalLink.astro";
+import { links } from "../data/content";
+---
+
+<ul class="flex items-center gap-1" aria-label="Social links">
+  <li>
+    <ExternalLink href={links.github} class="icon-btn" aria-label="GitHub (opens in a new tab)">
+      <Icon name="github" />
+    </ExternalLink>
+  </li>
+  <li>
+    <ExternalLink href={links.linkedin} class="icon-btn" aria-label="LinkedIn (opens in a new tab)">
+      <Icon name="linkedin" />
+    </ExternalLink>
+  </li>
+  <li>
+    <a href={`mailto:${links.email}`} class="icon-btn" aria-label={`Email ${links.email}`}>
+      <Icon name="mail" />
+    </a>
+  </li>
+</ul>

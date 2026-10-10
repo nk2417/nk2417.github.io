@@ -1,0 +1,20 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
+import { experience } from "../data/content";
+---
+
+<Layout
+  title="Experience"
+  description="Work experience of Hansung Noah Kang: web development, IT, security, and equity research roles."
+>
+  <header class="pt-10 pb-6 sm:pt-12">
+    <h1 class="text-3xl font-semibold tracking-tight text-ink">Experience</h1>
+  </header>
+
+  <ol class="relative ml-1 before:absolute before:top-2 before:bottom-2 before:left-[4px] before:w-px before:bg-line">
+    {experience.map((job) => <ExperienceItem job={job} />)}
+  </ol>
+
+  <div class="h-16"></div>
+</Layout>

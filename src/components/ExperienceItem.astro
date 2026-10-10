@@ -1,0 +1,26 @@
+---
+import ExternalLink from "./ExternalLink.astro";
+import type { Job } from "../data/content";
+
+interface Props {
+  job: Job;
+}
+const { job } = Astro.props;
+---
+
+<li class="reveal relative pl-7 pb-8 last:pb-0">
+  <span class="absolute top-[0.5rem] left-0 size-[9px] rounded-full border-2 border-accent bg-bg" aria-hidden="true"></span>
+  <div class="flex flex-col-reverse gap-x-6 gap-y-1 sm:flex-row sm:items-start sm:justify-between">
+    <h2 class="flex flex-col">
+      <span class="text-base font-semibold tracking-tight text-ink">
+        {job.companyUrl ? <ExternalLink href={job.companyUrl} class="link decoration-muted/60">{job.company}</ExternalLink> : job.company}
+      </span>
+      <span class="text-[0.95rem] font-normal text-accent italic">{job.role}</span>
+    </h2>
+    <p class="shrink-0 font-mono text-xs whitespace-nowrap text-muted sm:pt-1">{job.dates}</p>
+  </div>
+  <p class="text-sm text-muted">{job.location}</p>
+  <ul class="bullets mt-3 space-y-2 text-[0.95rem]">
+    {job.bullets.map((b) => <li>{b}</li>)}
+  </ul>
+</li>

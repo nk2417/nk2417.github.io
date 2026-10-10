@@ -1,0 +1,72 @@
+---
+import Icon from "./Icon.astro";
+import { nav, site } from "../data/content";
+
+const path = Astro.url.pathname.replace(/\/?$/, "/");
+const isActive = (href: string) => path === href;
+---
+
+<header
+  data-nav
+  class="sticky top-0 z-40 border-b border-transparent bg-bg/80 backdrop-blur-md transition-colors data-[scrolled]:border-line"
+>
+  <div class="mx-auto flex h-14 max-w-page items-center justify-between gap-4 px-5">
+    <a
+      href="/"
+      class="text-[0.95rem] font-semibold tracking-tight text-ink transition-colors hover:text-accent"
+      aria-current={path === "/" ? "page" : undefined}
+    >
+      {site.name}
+    </a>
+
+    <nav aria-label="Main" class="hidden items-center gap-1 md:flex">
+      <ul class="flex items-center gap-1">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
+                class="rounded-md px-2.5 py-1.5 text-sm text-muted transition-colors hover:text-ink aria-[current=page]:text-accent aria-[current=page]:underline aria-[current=page]:decoration-1 aria-[current=page]:underline-offset-[6px]"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-1 md:hidden">
+      <button
+        type="button"
+        class="icon-btn"
+        data-menu-button
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
+      >
+        <Icon name="menu" size={20} class="[[aria-expanded=true]>&]:hidden" />
+        <Icon name="close" size={20} class="hidden [[aria-expanded=true]>&]:block" />
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobile-menu" aria-label="Main" data-menu hidden class="border-t border-line bg-bg md:hidden">
+    <ul class="mx-auto flex max-w-page flex-col px-5 py-3">
+      {
+        nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              class="block py-2.5 text-base text-ink transition-colors hover:text-accent aria-[current=page]:text-accent"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

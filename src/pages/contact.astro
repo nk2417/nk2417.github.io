@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+import CopyEmail from "../components/CopyEmail.astro";
+import ExternalLink from "../components/ExternalLink.astro";
+import { contact, links } from "../data/content";
+
+const short = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+---
+
+<Layout title="Contact" description="Contact Hansung Noah Kang by email, GitHub, or LinkedIn.">
+  <header class="pt-10 pb-6 sm:pt-12">
+    <h1 class="text-3xl font-semibold tracking-tight text-ink">Contact</h1>
+    <p class="mt-2 text-base text-muted">{contact.intro}</p>
+  </header>
+
+  <ul class="reveal flex flex-col gap-2.5">
+    <li class="card group relative flex items-center gap-4 p-3.5 hover:-translate-y-px sm:p-4">
+      <Icon name="mail" size={20} class="shrink-0 text-muted transition-colors group-hover:text-accent" />
+      <div class="min-w-0 flex-1">
+        <p class="font-mono text-xs text-muted">Email</p>
+        <a
+          href={`mailto:${links.email}`}
+          class="block truncate text-ink transition-colors after:absolute after:inset-0 after:rounded-xl group-hover:text-accent"
+        >
+          {links.email}
+        </a>
+      </div>
+      <div class="relative z-10 shrink-0">
+        <CopyEmail />
+      </div>
+    </li>
+    {
+      [
+        { name: "GitHub", icon: "github" as const, href: links.github },
+        { name: "LinkedIn", icon: "linkedin" as const, href: links.linkedin },
+      ].map((item) => (
+        <li class="card group relative flex items-center gap-4 p-3.5 hover:-translate-y-px sm:p-4">
+          <Icon name={item.icon} size={20} class="shrink-0 text-muted transition-colors group-hover:text-accent" />
+          <div class="min-w-0 flex-1">
+            <p class="font-mono text-xs text-muted">{item.name}</p>
+            <ExternalLink
+              href={item.href}
+              class="block truncate text-ink transition-colors after:absolute after:inset-0 after:rounded-xl group-hover:text-accent"
+              aria-label={`${item.name}: ${short(item.href)} (opens in a new tab)`}
+            >
+              {short(item.href)}
+            </ExternalLink>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="h-16"></div>
+</Layout>
